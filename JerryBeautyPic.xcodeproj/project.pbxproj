@@ -263,8 +263,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = JerryBeautyPic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jerry.JerryBeautyPic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.saicmotor.zxq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "527c943b-f37f-4ee3-9583-f37f17bbfdd3";
 			};
 			name = Debug;
 		};
@@ -274,8 +275,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = JerryBeautyPic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = jerry.JerryBeautyPic;
+				PRODUCT_BUNDLE_IDENTIFIER = com.saicmotor.zxq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "527c943b-f37f-4ee3-9583-f37f17bbfdd3";
 			};
 			name = Release;
 		};
@@ -298,6 +300,7 @@
 				C47F647C1C956B7B0065FC83 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
