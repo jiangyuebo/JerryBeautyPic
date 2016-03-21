@@ -7,15 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		342BDAA95E9E49B31E398CAC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E158D3005ED309C5BBF201F6 /* libPods.a */; };
 		C47F64681C956B7B0065FC83 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C47F64671C956B7B0065FC83 /* main.m */; };
 		C47F646B1C956B7B0065FC83 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C47F646A1C956B7B0065FC83 /* AppDelegate.m */; };
 		C47F646E1C956B7B0065FC83 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C47F646D1C956B7B0065FC83 /* ViewController.m */; };
 		C47F64711C956B7B0065FC83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C47F646F1C956B7B0065FC83 /* Main.storyboard */; };
 		C47F64731C956B7B0065FC83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C47F64721C956B7B0065FC83 /* Assets.xcassets */; };
 		C47F64761C956B7B0065FC83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C47F64741C956B7B0065FC83 /* LaunchScreen.storyboard */; };
+		C488EF921CA042D200FBADB2 /* ImageBlockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C488EF911CA042D200FBADB2 /* ImageBlockModel.m */; };
+		C488EF971CA06CBA00FBADB2 /* PishumToast.m in Sources */ = {isa = PBXBuildFile; fileRef = C488EF961CA06CBA00FBADB2 /* PishumToast.m */; };
+		C488EF9B1CA0701C00FBADB2 /* AMTumblrHud.m in Sources */ = {isa = PBXBuildFile; fileRef = C488EF9A1CA0701C00FBADB2 /* AMTumblrHud.m */; };
+		C498CE541C9B26F000985A2D /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = C498CE531C9B26F000985A2D /* Podfile */; };
+		C4ADCE101C9F021F00136ECD /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = C4ADCE0F1C9F021F00136ECD /* UIColor+Hex.m */; };
+		C4ADCE131C9F046F00136ECD /* BigImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4ADCE121C9F046F00136ECD /* BigImageViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30B2D57D7A24CA4D191B61AE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		A1D47764E68DB4E5F7C0BAE6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C47F64631C956B7B0065FC83 /* JerryBeautyPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JerryBeautyPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C47F64671C956B7B0065FC83 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C47F64691C956B7B0065FC83 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -26,6 +35,19 @@
 		C47F64721C956B7B0065FC83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C47F64751C956B7B0065FC83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C47F64771C956B7B0065FC83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C488EF901CA042D200FBADB2 /* ImageBlockModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageBlockModel.h; sourceTree = "<group>"; };
+		C488EF911CA042D200FBADB2 /* ImageBlockModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageBlockModel.m; sourceTree = "<group>"; };
+		C488EF931CA051D600FBADB2 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
+		C488EF951CA06CBA00FBADB2 /* PishumToast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PishumToast.h; sourceTree = "<group>"; };
+		C488EF961CA06CBA00FBADB2 /* PishumToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PishumToast.m; sourceTree = "<group>"; };
+		C488EF991CA0701C00FBADB2 /* AMTumblrHud.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AMTumblrHud.h; sourceTree = "<group>"; };
+		C488EF9A1CA0701C00FBADB2 /* AMTumblrHud.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AMTumblrHud.m; sourceTree = "<group>"; };
+		C498CE531C9B26F000985A2D /* Podfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; };
+		C4ADCE0E1C9F021F00136ECD /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		C4ADCE0F1C9F021F00136ECD /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		C4ADCE111C9F046F00136ECD /* BigImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigImageViewController.h; sourceTree = "<group>"; };
+		C4ADCE121C9F046F00136ECD /* BigImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigImageViewController.m; sourceTree = "<group>"; };
+		E158D3005ED309C5BBF201F6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +55,30 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				342BDAA95E9E49B31E398CAC /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2982933A9045FDD08A376730 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				A1D47764E68DB4E5F7C0BAE6 /* Pods.debug.xcconfig */,
+				30B2D57D7A24CA4D191B61AE /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		C47F645A1C956B7B0065FC83 = {
 			isa = PBXGroup;
 			children = (
+				C498CE531C9B26F000985A2D /* Podfile */,
 				C47F64651C956B7B0065FC83 /* JerryBeautyPic */,
 				C47F64641C956B7B0065FC83 /* Products */,
+				2982933A9045FDD08A376730 /* Pods */,
+				F1DBFB4FC3606D678172C95E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,10 +93,14 @@
 		C47F64651C956B7B0065FC83 /* JerryBeautyPic */ = {
 			isa = PBXGroup;
 			children = (
+				C4ADCE141C9F1FED00136ECD /* Model */,
+				C4ADCE0D1C9F01F700136ECD /* Tools */,
 				C47F64691C956B7B0065FC83 /* AppDelegate.h */,
 				C47F646A1C956B7B0065FC83 /* AppDelegate.m */,
 				C47F646C1C956B7B0065FC83 /* ViewController.h */,
 				C47F646D1C956B7B0065FC83 /* ViewController.m */,
+				C4ADCE111C9F046F00136ECD /* BigImageViewController.h */,
+				C4ADCE121C9F046F00136ECD /* BigImageViewController.m */,
 				C47F646F1C956B7B0065FC83 /* Main.storyboard */,
 				C47F64721C956B7B0065FC83 /* Assets.xcassets */,
 				C47F64741C956B7B0065FC83 /* LaunchScreen.storyboard */,
@@ -79,6 +118,53 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C488EF941CA06CA800FBADB2 /* Toast */ = {
+			isa = PBXGroup;
+			children = (
+				C488EF951CA06CBA00FBADB2 /* PishumToast.h */,
+				C488EF961CA06CBA00FBADB2 /* PishumToast.m */,
+			);
+			name = Toast;
+			sourceTree = "<group>";
+		};
+		C488EF981CA06FFA00FBADB2 /* LoadHud */ = {
+			isa = PBXGroup;
+			children = (
+				C488EF991CA0701C00FBADB2 /* AMTumblrHud.h */,
+				C488EF9A1CA0701C00FBADB2 /* AMTumblrHud.m */,
+			);
+			name = LoadHud;
+			sourceTree = "<group>";
+		};
+		C4ADCE0D1C9F01F700136ECD /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				C488EF981CA06FFA00FBADB2 /* LoadHud */,
+				C488EF941CA06CA800FBADB2 /* Toast */,
+				C4ADCE0E1C9F021F00136ECD /* UIColor+Hex.h */,
+				C4ADCE0F1C9F021F00136ECD /* UIColor+Hex.m */,
+				C488EF931CA051D600FBADB2 /* Header.h */,
+			);
+			name = Tools;
+			sourceTree = "<group>";
+		};
+		C4ADCE141C9F1FED00136ECD /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C488EF901CA042D200FBADB2 /* ImageBlockModel.h */,
+				C488EF911CA042D200FBADB2 /* ImageBlockModel.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		F1DBFB4FC3606D678172C95E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				E158D3005ED309C5BBF201F6 /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,9 +172,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C47F647A1C956B7B0065FC83 /* Build configuration list for PBXNativeTarget "JerryBeautyPic" */;
 			buildPhases = (
+				AF896F1546D885871969DCD9 /* Check Pods Manifest.lock */,
 				C47F645F1C956B7B0065FC83 /* Sources */,
 				C47F64601C956B7B0065FC83 /* Frameworks */,
 				C47F64611C956B7B0065FC83 /* Resources */,
+				EF6B216A28D491C67F79E269 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -138,11 +226,45 @@
 			files = (
 				C47F64761C956B7B0065FC83 /* LaunchScreen.storyboard in Resources */,
 				C47F64731C956B7B0065FC83 /* Assets.xcassets in Resources */,
+				C498CE541C9B26F000985A2D /* Podfile in Resources */,
 				C47F64711C956B7B0065FC83 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		AF896F1546D885871969DCD9 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		EF6B216A28D491C67F79E269 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		C47F645F1C956B7B0065FC83 /* Sources */ = {
@@ -150,8 +272,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				C47F646E1C956B7B0065FC83 /* ViewController.m in Sources */,
+				C4ADCE101C9F021F00136ECD /* UIColor+Hex.m in Sources */,
+				C4ADCE131C9F046F00136ECD /* BigImageViewController.m in Sources */,
 				C47F646B1C956B7B0065FC83 /* AppDelegate.m in Sources */,
 				C47F64681C956B7B0065FC83 /* main.m in Sources */,
+				C488EF9B1CA0701C00FBADB2 /* AMTumblrHud.m in Sources */,
+				C488EF921CA042D200FBADB2 /* ImageBlockModel.m in Sources */,
+				C488EF971CA06CBA00FBADB2 /* PishumToast.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,25 +386,27 @@
 		};
 		C47F647B1C956B7B0065FC83 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A1D47764E68DB4E5F7C0BAE6 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = JerryBeautyPic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.saicmotor.zxq;
+				PRODUCT_BUNDLE_IDENTIFIER = com.banma.zxq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "527c943b-f37f-4ee3-9583-f37f17bbfdd3";
+				PROVISIONING_PROFILE = "33198173-7634-44f4-990e-eeee746d0a48";
 			};
 			name = Debug;
 		};
 		C47F647C1C956B7B0065FC83 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30B2D57D7A24CA4D191B61AE /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				INFOPLIST_FILE = JerryBeautyPic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.saicmotor.zxq;
+				PRODUCT_BUNDLE_IDENTIFIER = com.banma.zxq;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "527c943b-f37f-4ee3-9583-f37f17bbfdd3";
+				PROVISIONING_PROFILE = "33198173-7634-44f4-990e-eeee746d0a48";
 			};
 			name = Release;
 		};
