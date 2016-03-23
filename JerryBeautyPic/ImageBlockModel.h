@@ -13,6 +13,8 @@
 @interface ImageBlockModel : NSObject
 //图片
 @property (strong,nonatomic) UIImage *image;
+//图片名称
+@property (copy,nonatomic) NSString *imageName;
 //说明
 @property (copy,nonatomic) NSString *description;
 //标签

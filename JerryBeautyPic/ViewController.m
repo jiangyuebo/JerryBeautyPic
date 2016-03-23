@@ -11,6 +11,7 @@
 #import "UIColor+Hex.h"
 #import "BigImageViewController.h"
 #import "ImageBlockModel.h"
+#import "InfoImageView.h"
 
 #import "Header.h"
 
@@ -28,8 +29,13 @@
 @property (assign,nonatomic) NSUInteger currentIndex;
 //被选中的图片
 @property (strong,nonatomic) UIImage *selectedImage;
+//被选中的图片名称
+@property (strong,nonatomic) NSString *selectedImageName;
 
 @property (strong,nonatomic) AMTumblrHud *tumblrHUD;
+
+//进入收藏按钮
+@property (strong,nonatomic) UIButton *enterFavorites;
 
 @end
 
@@ -60,6 +66,26 @@
     self.automaticallyAdjustsScrollViewInsets = false;
     
     self.screenRect = [[UIScreen mainScreen] bounds];
+    
+    //添加收藏进入按钮
+    [self addEnterFavoriteListButton];
+}
+
+#pragma mark 添加收藏进入按钮
+- (void)addEnterFavoriteListButton
+{
+    self.enterFavorites = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.enterFavorites setBackgroundImage:[UIImage imageNamed:@"folder_bookmark"] forState:UIControlStateNormal];
+    self.enterFavorites.frame = CGRectMake(0, 0, 22, 22);
+    [self.enterFavorites addTarget:self action:@selector(enterFavoritesList) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:self.enterFavorites];
+    self.navigationItem.rightBarButtonItem = item;
+}
+
+- (void)enterFavoritesList
+{
+    NSLog(@"进入收藏列表");
 }
 
 #pragma mark 从服务器加载图片信息
@@ -79,6 +105,11 @@
                 //获得图片
                 NSString *urlTemp = [obj objectForKey:@"urlstring"];
                 NSString *imageURLStr = [urlTemp stringByRemovingPercentEncoding];
+                
+                //获得图片名
+                NSString *imageName = [imageURLStr lastPathComponent];
+                imageBlock.imageName = imageName;
+                
                 //读取图片数据
                 UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURLStr]]];
                 imageBlock.image = image;
@@ -191,11 +222,12 @@
         }
     }
     
-    UIImageView *imageView = [cell viewWithTag:1];
+    InfoImageView *imageView = [cell viewWithTag:1];
     
     ImageBlockModel *imageBlock = self.imageBlockModelArray[indexPath.row];
     
     imageView.image = imageBlock.image;
+    imageView.imageName = imageBlock.imageName;
     
     //图片添加点击事件
     UITapGestureRecognizer *tapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(imageClicked:)];
@@ -210,9 +242,6 @@
     //更新日期
     UILabel *updateDate = [cell viewWithTag:3];
     updateDate.text = imageBlock.updateDateStr;
-    
-    NSArray *tagsArray = imageBlock.tagsArray;
-    NSLog(@" tags number : %ld",[tagsArray count]);
     
     //tag
     UIView *tagsView = [cell viewWithTag:4];
@@ -238,6 +267,8 @@
                 tagContent = @"紧身";
             }else if ([tagOrigin isEqualToString:TAG_ASS]){
                 tagContent = @"美臀";
+            }else if ([tagOrigin isEqualToString:TAG_SPORT]){
+                tagContent = @"运动";
             }
             
             UILabel *tagLabel = [[UILabel alloc] init];
@@ -254,6 +285,11 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    NSLog(@"didSelectRowAtIndexPath ... ");
+}
+
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //设置当前显示的是倒数第几张图片时，开始从后台加载新图片
@@ -266,9 +302,10 @@
 - (void)imageClicked:(UITapGestureRecognizer *) gestureRecognizer
 {
     //图片被点击
-    UIImageView *imageView = (UIImageView *)gestureRecognizer.view;
+    InfoImageView *imageView = (InfoImageView *)gestureRecognizer.view;
     self.selectedImage = imageView.image;
-    NSLog(@"图片设置完毕");
+    self.selectedImageName = imageView.imageName;
+    
     //跳转到大图页面
     [self performSegueWithIdentifier:@"showBig" sender:self];
 }
@@ -277,9 +314,13 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    //判断所选图片在数组中的位置
+    
+    
     BigImageViewController *bigImageViewController = segue.destinationViewController;
     NSLog(@"准备跳转");
     bigImageViewController.image = self.selectedImage;
+    bigImageViewController.imageName = self.selectedImageName;
 }
 
 @end

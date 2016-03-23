@@ -10,6 +10,6 @@
 
 @implementation ImageBlockModel
 
-@synthesize image,description,tagsArray,updateDateStr,updateDate;
+@synthesize image,imageName,description,tagsArray,updateDateStr,updateDate;
 
 @end

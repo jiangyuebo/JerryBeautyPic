@@ -12,4 +12,6 @@
 
 @property (strong,nonatomic) UIImage *image;
 
+@property (strong,nonatomic) NSString *imageName;
+
 @end

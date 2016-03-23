@@ -12,11 +12,14 @@
 #define tableViewCell @"tableCell"
 #define leftPicNumber 2
 
+#define DIR_NAME_IMAGES @"favorites"
+
 #define TAG_BEAUTY @"meinv"
 #define TAG_LEG @"meitui"
 #define TAG_SWIM_SUIT @"yongyi"
 #define TAG_TIGHT @"jinshen"
 #define TAG_ASS @"meitun"
+#define TAG_SPORT @"yundong"
 
 #define DIRECTION_UP 0
 #define DIRECTION_DOWN -1

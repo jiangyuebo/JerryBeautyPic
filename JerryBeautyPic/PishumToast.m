@@ -39,7 +39,7 @@ static UIView *parentView = nil;
     label.textAlignment = NSTextAlignmentCenter;
     
     CGPoint centerPoint =  view.center;
-    centerPoint.y = view.bounds.size.height - 50.0f;
+    centerPoint.y = view.bounds.size.height - 100.0f;
     
     label.layer.cornerRadius = 5;
     label.layer.borderWidth = 4;

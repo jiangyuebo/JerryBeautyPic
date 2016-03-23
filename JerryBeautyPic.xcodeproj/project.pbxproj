@@ -20,6 +20,8 @@
 		C498CE541C9B26F000985A2D /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = C498CE531C9B26F000985A2D /* Podfile */; };
 		C4ADCE101C9F021F00136ECD /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = C4ADCE0F1C9F021F00136ECD /* UIColor+Hex.m */; };
 		C4ADCE131C9F046F00136ECD /* BigImageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C4ADCE121C9F046F00136ECD /* BigImageViewController.m */; };
+		C4EEA3041CA1AFD8001B1B93 /* FileOperationHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = C4EEA3031CA1AFD8001B1B93 /* FileOperationHelper.m */; };
+		C4EEA30B1CA1C78D001B1B93 /* InfoImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = C4EEA30A1CA1C78D001B1B93 /* InfoImageView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +49,10 @@
 		C4ADCE0F1C9F021F00136ECD /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		C4ADCE111C9F046F00136ECD /* BigImageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BigImageViewController.h; sourceTree = "<group>"; };
 		C4ADCE121C9F046F00136ECD /* BigImageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BigImageViewController.m; sourceTree = "<group>"; };
+		C4EEA3021CA1AFD8001B1B93 /* FileOperationHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FileOperationHelper.h; sourceTree = "<group>"; };
+		C4EEA3031CA1AFD8001B1B93 /* FileOperationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileOperationHelper.m; sourceTree = "<group>"; };
+		C4EEA3091CA1C78D001B1B93 /* InfoImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoImageView.h; sourceTree = "<group>"; };
+		C4EEA30A1CA1C78D001B1B93 /* InfoImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoImageView.m; sourceTree = "<group>"; };
 		E158D3005ED309C5BBF201F6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -139,10 +145,10 @@
 		C4ADCE0D1C9F01F700136ECD /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				C4EEA3051CA1BFE0001B1B93 /* Custom */,
+				C4EEA3011CA1AFC1001B1B93 /* FileOperation */,
 				C488EF981CA06FFA00FBADB2 /* LoadHud */,
 				C488EF941CA06CA800FBADB2 /* Toast */,
-				C4ADCE0E1C9F021F00136ECD /* UIColor+Hex.h */,
-				C4ADCE0F1C9F021F00136ECD /* UIColor+Hex.m */,
 				C488EF931CA051D600FBADB2 /* Header.h */,
 			);
 			name = Tools;
@@ -155,6 +161,26 @@
 				C488EF911CA042D200FBADB2 /* ImageBlockModel.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		C4EEA3011CA1AFC1001B1B93 /* FileOperation */ = {
+			isa = PBXGroup;
+			children = (
+				C4EEA3021CA1AFD8001B1B93 /* FileOperationHelper.h */,
+				C4EEA3031CA1AFD8001B1B93 /* FileOperationHelper.m */,
+			);
+			name = FileOperation;
+			sourceTree = "<group>";
+		};
+		C4EEA3051CA1BFE0001B1B93 /* Custom */ = {
+			isa = PBXGroup;
+			children = (
+				C4ADCE0E1C9F021F00136ECD /* UIColor+Hex.h */,
+				C4ADCE0F1C9F021F00136ECD /* UIColor+Hex.m */,
+				C4EEA3091CA1C78D001B1B93 /* InfoImageView.h */,
+				C4EEA30A1CA1C78D001B1B93 /* InfoImageView.m */,
+			);
+			name = Custom;
 			sourceTree = "<group>";
 		};
 		F1DBFB4FC3606D678172C95E /* Frameworks */ = {
@@ -272,8 +298,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C47F646E1C956B7B0065FC83 /* ViewController.m in Sources */,
+				C4EEA3041CA1AFD8001B1B93 /* FileOperationHelper.m in Sources */,
 				C4ADCE101C9F021F00136ECD /* UIColor+Hex.m in Sources */,
 				C4ADCE131C9F046F00136ECD /* BigImageViewController.m in Sources */,
+				C4EEA30B1CA1C78D001B1B93 /* InfoImageView.m in Sources */,
 				C47F646B1C956B7B0065FC83 /* AppDelegate.m in Sources */,
 				C47F64681C956B7B0065FC83 /* main.m in Sources */,
 				C488EF9B1CA0701C00FBADB2 /* AMTumblrHud.m in Sources */,

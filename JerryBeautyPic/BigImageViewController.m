@@ -7,6 +7,7 @@
 //
 
 #import "BigImageViewController.h"
+#import "FileOperationHelper.h"
 #import "PishumToast.h"
 #import "Header.h"
 
@@ -18,7 +19,11 @@
 
 @property (assign,nonatomic) CGRect originFrame;
 
+//下载按钮
 @property (strong,nonatomic) UIButton *downloadButton;
+
+//收藏按钮
+@property (strong,nonatomic) UIButton *favoriteButton;
 
 @end
 
@@ -31,8 +36,41 @@
     
     [self resetImageViewSize];
     
+    [self initView];
+}
+
+#pragma mark 初始化界面控件
+- (void)initView
+{
     //添加下载按钮
     [self addControlView];
+    
+    //判断当前图片是否已在收藏中
+    if (![self isImageInFavorites:self.imageName]) {
+        //图片未收藏，添加收藏按钮
+        [self addFavoriteButton];
+    }
+}
+
+#pragma mark 添加收藏按钮
+- (void)addFavoriteButton
+{
+    self.favoriteButton = [UIButton buttonWithType:UIButtonTypeCustom];
+    [self.favoriteButton setBackgroundImage:[UIImage imageNamed:@"favorite"] forState:UIControlStateNormal];
+    self.favoriteButton.frame = CGRectMake(0, 0, 22, 22);
+    [self.favoriteButton addTarget:self action:@selector(favoriteClicked:) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:self.favoriteButton];
+    self.navigationItem.rightBarButtonItem = item;
+}
+
+#pragma mark 隐藏收藏按钮
+- (void)removeFavoriteButton
+{
+    if (self.favoriteButton) {
+        NSLog(@"self.favoriteButton removeFromSuperview");
+        self.favoriteButton.hidden = YES;
+    }
 }
 
 #pragma mark delegate view did appear
@@ -50,6 +88,70 @@
     //将图片下载到本地相册
     UIImageWriteToSavedPhotosAlbum(self.image, self, @selector(image:didFinishSavingWithError:contextInfo:), NULL);
 }
+
+#pragma mark 点击了收藏按钮
+- (void)favoriteClicked:(UIBarButtonItem *)sender
+{
+    NSLog(@"favorite clicked ... ");
+    [self saveImageToSandBox:self.image];
+}
+
+#pragma mark 保存到沙盒中
+- (void)saveImageToSandBox:(UIImage *)image
+{
+    //获取图片存储文件夹路径
+    NSString *savePath = [FileOperationHelper getPictureSaveDocumentPath:DIR_NAME_IMAGES];
+    //判断指定文件夹是否存在
+    if ([FileOperationHelper isDocumentExistAtPath:savePath]) {
+        //
+        NSLog(@"文件夹存在");
+        [self saveImage:image];
+    }else{
+        NSLog(@"文件夹不存在");
+        //创建文件夹
+        if ([FileOperationHelper createDocumentInSandBoxByDocumentName:DIR_NAME_IMAGES]) {
+            //
+            NSLog(@"文件夹创建成功,保存文件");
+            [self saveImage:image];
+        }else{
+            NSLog(@"文件夹创建失败");
+        }
+    }
+    
+}
+
+#pragma mark 保存图片
+- (BOOL)saveImage:(UIImage *)image
+{
+    //获取图片保存路径
+    NSString *imagePath = [FileOperationHelper getPictureSavePathByDocumentName:DIR_NAME_IMAGES andImageName:self.imageName];
+    NSLog(@"image save path : %@",imagePath);
+    if ([FileOperationHelper saveImage:image toSandboxByPath:imagePath]) {
+        //保存成功
+        NSLog(@"保存成功");
+        [PishumToast showToastWithMessage:@"收藏成功" Length:TOAST_SHORT ParentView:self.view];
+        //隐藏收藏按钮
+        [self removeFavoriteButton];
+        return YES;
+    }else{
+        //保存失败
+        NSLog(@"保存失败");
+        [PishumToast showToastWithMessage:@"收藏失败" Length:TOAST_SHORT ParentView:self.view];
+        return NO;
+    }
+}
+
+#pragma mark 判断当前照片是否已在收藏中
+- (BOOL)isImageInFavorites:(NSString *)imageName
+{
+    NSString *savePath = [FileOperationHelper getPictureSavePathByDocumentName:DIR_NAME_IMAGES andImageName:imageName];
+    if ([FileOperationHelper isDocumentExistAtPath:savePath]) {
+        NSLog(@"文件存在");
+        return YES;
+    }
+    return NO;
+}
+
 
 #pragma mark 保存至相册的回调
 - (void) image:(UIImage *)image didFinishSavingWithError:(NSError *)error contextInfo:(void *) contextInfo

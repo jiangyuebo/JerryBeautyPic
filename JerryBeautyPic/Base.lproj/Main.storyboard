@@ -75,7 +75,7 @@
                                                         <constraint firstItem="YIP-xu-WRh" firstAttribute="leading" secondItem="rOl-KC-UUM" secondAttribute="leading" constant="8" id="fkY-K5-YiX"/>
                                                     </constraints>
                                                 </view>
-                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Yr-BS-2DU">
+                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="5Yr-BS-2DU" customClass="InfoImageView">
                                                     <rect key="frame" x="9" y="8" width="310" height="268.5"/>
                                                 </imageView>
                                             </subviews>
