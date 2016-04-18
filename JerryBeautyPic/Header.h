@@ -12,6 +12,8 @@
 #define tableViewCell @"tableCell"
 #define leftPicNumber 2
 
+#define favoriteCell @"favoriteCell"
+
 #define DIR_NAME_IMAGES @"favorites"
 
 #define TAG_BEAUTY @"meinv"
@@ -23,6 +25,8 @@
 
 #define DIRECTION_UP 0
 #define DIRECTION_DOWN -1
+
+#define MAC_FAVORITE 10
 
 #define UIColorFromRGB(rgbValue) [UIColor \
 colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \

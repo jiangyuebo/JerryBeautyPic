@@ -80,8 +80,18 @@
 
 + (NSString *)deleteFileNameExtension:(NSString *)fileName
 {
+    NSRange range = [fileName rangeOfString:@"." options:NSBackwardsSearch];
+    if (range.length > 0) {
+        fileName = [fileName substringToIndex:NSMaxRange(range)-1];
+    }
     
-    
-    return nil;
+    return fileName;
+}
+
+#pragma mark 删除沙盒中指定路径文件
++ (BOOL)deleteFileFromSandboxByPath:(NSString *)path
+{
+    NSFileManager *manager = [NSFileManager defaultManager];
+    return [manager removeItemAtPath:path error:nil];
 }
 @end

@@ -28,6 +28,9 @@
 //保存图片到沙盒指定路径下
 + (BOOL)saveImage:(UIImage *)image toSandboxByPath:(NSString *)path;
 
+//删除沙盒中指定路径文件
++ (BOOL)deleteFileFromSandboxByPath:(NSString *)path;
+
 //获取沙盒路径下所有文件名
 + (NSArray *)getAllFileNameInDocumentByDocumentName:(NSString *)documentPath;
 

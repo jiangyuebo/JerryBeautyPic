@@ -130,5 +130,81 @@
             </objects>
             <point key="canvasLocation" x="352" y="163"/>
         </scene>
+        <!--Favorites List View Controller-->
+        <scene sceneID="1r9-UI-WdA">
+            <objects>
+                <viewController storyboardIdentifier="FavoritesListViewController" id="gWU-HD-z0L" customClass="FavoritesListViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="H7m-JV-7SU"/>
+                        <viewControllerLayoutGuide type="bottom" id="9MX-B5-vLt"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="J5H-Tm-Xtr">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="332" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="QMX-6Y-sKC">
+                                <rect key="frame" x="16" y="72" width="288" height="496"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="favoriteBlock" selectionStyle="default" indentationWidth="10" reuseIdentifier="favoriteCell" rowHeight="332" id="oRO-wh-jwX">
+                                        <rect key="frame" x="0.0" y="92" width="288" height="332"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oRO-wh-jwX" id="yoc-lR-sP3">
+                                            <rect key="frame" x="0.0" y="0.0" width="288" height="332"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HkL-ny-VDl">
+                                                    <rect key="frame" x="0.0" y="0.0" width="288" height="264"/>
+                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jm4-Nq-hZm">
+                                                    <rect key="frame" x="0.0" y="263" width="288" height="56"/>
+                                                    <color key="backgroundColor" red="0.93778788695049997" green="0.96212608625151519" blue="0.95735385820429786" alpha="1" colorSpace="calibratedRGB"/>
+                                                </view>
+                                                <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zMj-27-0Zr">
+                                                    <rect key="frame" x="89" y="272" width="111" height="36"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="36" id="0ku-TK-taY"/>
+                                                        <constraint firstAttribute="width" constant="111" id="JWC-P1-uvH"/>
+                                                    </constraints>
+                                                    <state key="normal" title="Button" image="favorite_delete"/>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="HkL-ny-VDl" secondAttribute="trailing" id="52w-tE-Vnf"/>
+                                                <constraint firstItem="zMj-27-0Zr" firstAttribute="centerX" secondItem="HkL-ny-VDl" secondAttribute="centerX" id="WRo-yH-B0W"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="jm4-Nq-hZm" secondAttribute="bottom" constant="5" id="Z0g-a8-mtb"/>
+                                                <constraint firstItem="jm4-Nq-hZm" firstAttribute="leading" secondItem="yoc-lR-sP3" secondAttribute="leadingMargin" constant="-8" id="aaH-ch-ARz"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="zMj-27-0Zr" secondAttribute="bottom" constant="16" id="g8C-mc-E6q"/>
+                                                <constraint firstItem="HkL-ny-VDl" firstAttribute="top" secondItem="yoc-lR-sP3" secondAttribute="top" id="h0b-NH-1su"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="jm4-Nq-hZm" secondAttribute="trailing" constant="-8" id="oZv-Lp-ToN"/>
+                                                <constraint firstItem="zMj-27-0Zr" firstAttribute="top" secondItem="HkL-ny-VDl" secondAttribute="bottom" constant="8" id="rZM-M4-hX9"/>
+                                                <constraint firstItem="HkL-ny-VDl" firstAttribute="leading" secondItem="yoc-lR-sP3" secondAttribute="leading" id="xP1-eh-Arn"/>
+                                                <constraint firstItem="jm4-Nq-hZm" firstAttribute="top" secondItem="HkL-ny-VDl" secondAttribute="bottom" constant="-1" id="yzI-RF-5tx"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="QMX-6Y-sKC" secondAttribute="trailing" id="Bl9-ou-F7P"/>
+                            <constraint firstItem="QMX-6Y-sKC" firstAttribute="top" secondItem="H7m-JV-7SU" secondAttribute="bottom" constant="8" id="dX2-mp-9dR"/>
+                            <constraint firstItem="9MX-B5-vLt" firstAttribute="top" secondItem="QMX-6Y-sKC" secondAttribute="bottom" id="rbI-8Q-YdL"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="QMX-6Y-sKC" secondAttribute="leading" id="vho-h9-0hO"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="favoriteListTableView" destination="QMX-6Y-sKC" id="E9v-38-J7E"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1yO-fG-LMJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="732" y="163"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="favorite_delete" width="570" height="174"/>
+    </resources>
 </document>

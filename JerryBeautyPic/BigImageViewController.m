@@ -11,9 +11,10 @@
 #import "PishumToast.h"
 #import "Header.h"
 
-@interface BigImageViewController ()
+@interface BigImageViewController ()<UIScrollViewDelegate>
 
 @property (strong,nonatomic) UIImageView *imageView;
+@property (strong,nonatomic) UIScrollView *bigImageScrollView;
 
 @property (assign,nonatomic) CGRect screenRect;
 
@@ -68,7 +69,6 @@
 - (void)removeFavoriteButton
 {
     if (self.favoriteButton) {
-        NSLog(@"self.favoriteButton removeFromSuperview");
         self.favoriteButton.hidden = YES;
     }
 }
@@ -82,6 +82,12 @@
     [self downLoadButtonMove:DIRECTION_UP withView:self.downloadButton];
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [self downLoadButtonMove:DIRECTION_DOWN withView:self.downloadButton];
+}
+
 #pragma mark 点击了下载按钮
 - (void)downloadImage{
     [self downLoadButtonMove:DIRECTION_DOWN withView:self.downloadButton];
@@ -92,8 +98,23 @@
 #pragma mark 点击了收藏按钮
 - (void)favoriteClicked:(UIBarButtonItem *)sender
 {
-    NSLog(@"favorite clicked ... ");
-    [self saveImageToSandBox:self.image];
+    //获取图片存储文件夹路径
+    NSString *savePath = [FileOperationHelper getPictureSaveDocumentPath:DIR_NAME_IMAGES];
+    //判断文件夹是否存在
+    if ([FileOperationHelper isDocumentExistAtPath:savePath]) {
+        //文件夹存在，判断收藏数量
+        NSArray *fileNameArray = [FileOperationHelper getAllFileNameInDocumentByDocumentName:DIR_NAME_IMAGES];
+        if ([fileNameArray count] < MAC_FAVORITE) {
+            //还可以收藏
+            [self saveImageToSandBox:self.image];
+        }else{
+            //提示
+            [PishumToast showToastWithMessage:@"暂时只可以收藏10张哦~" Length:TOAST_SHORT ParentView:self.view];
+        }
+    }else{
+        //文件夹不存在，收藏
+        [self saveImageToSandBox:self.image];
+    }
 }
 
 #pragma mark 保存到沙盒中
@@ -104,17 +125,13 @@
     //判断指定文件夹是否存在
     if ([FileOperationHelper isDocumentExistAtPath:savePath]) {
         //
-        NSLog(@"文件夹存在");
         [self saveImage:image];
     }else{
-        NSLog(@"文件夹不存在");
         //创建文件夹
         if ([FileOperationHelper createDocumentInSandBoxByDocumentName:DIR_NAME_IMAGES]) {
-            //
-            NSLog(@"文件夹创建成功,保存文件");
             [self saveImage:image];
         }else{
-            NSLog(@"文件夹创建失败");
+            [PishumToast showToastWithMessage:@"文件夹创建失败，无法保存图片" Length:TOAST_SHORT ParentView:self.view];
         }
     }
     
@@ -125,17 +142,14 @@
 {
     //获取图片保存路径
     NSString *imagePath = [FileOperationHelper getPictureSavePathByDocumentName:DIR_NAME_IMAGES andImageName:self.imageName];
-    NSLog(@"image save path : %@",imagePath);
     if ([FileOperationHelper saveImage:image toSandboxByPath:imagePath]) {
         //保存成功
-        NSLog(@"保存成功");
         [PishumToast showToastWithMessage:@"收藏成功" Length:TOAST_SHORT ParentView:self.view];
         //隐藏收藏按钮
         [self removeFavoriteButton];
         return YES;
     }else{
         //保存失败
-        NSLog(@"保存失败");
         [PishumToast showToastWithMessage:@"收藏失败" Length:TOAST_SHORT ParentView:self.view];
         return NO;
     }
@@ -146,7 +160,6 @@
 {
     NSString *savePath = [FileOperationHelper getPictureSavePathByDocumentName:DIR_NAME_IMAGES andImageName:imageName];
     if ([FileOperationHelper isDocumentExistAtPath:savePath]) {
-        NSLog(@"文件存在");
         return YES;
     }
     return NO;
@@ -179,18 +192,20 @@
 #pragma mark 根据图片大小重设imageView大小和位置
 - (void)resetImageViewSize
 {
+    self.automaticallyAdjustsScrollViewInsets = false;
+    
     //图片尺寸
     CGSize imageSize = self.image.size;
     
     //屏幕宽高
     CGFloat screenWidth = self.screenRect.size.width;
-    CGFloat screenHeight = self.screenRect.size.height;
+//    CGFloat screenHeight = self.screenRect.size.height;
     
     //调整后图片宽高
     CGFloat imageViewWidth = screenWidth;
     CGFloat imageViewHeight = screenWidth * (imageSize.height/imageSize.width);
     CGFloat imageViewX = 0;
-    CGFloat imageViewY = (screenHeight - imageViewHeight)/2;
+    CGFloat imageViewY = 80;
     
     //调整imageView宽高
     CGRect imageViewNewRect = CGRectMake(imageViewX, imageViewY, imageViewWidth, imageViewHeight);
@@ -200,12 +215,41 @@
     //添加图片
     self.imageView = [[UIImageView alloc] initWithImage:self.image];
     self.imageView.frame = imageViewNewRect;
-    self.imageView.userInteractionEnabled = YES;
+//    self.imageView.userInteractionEnabled = YES;
     
     //为图片添加手势
-    [self addGestureRecognizerToView:self.imageView];
+//    [self addGestureRecognizerToView:self.imageView];
     
-    [self.view addSubview:self.imageView];
+    //创建ScrollView,将ImageView放入图片尺寸的scrollview中，方便的使用手势及缩放
+    self.bigImageScrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
+    self.bigImageScrollView.contentSize = CGSizeMake(imageViewWidth, imageViewHeight);
+//    self.bigImageScrollView.contentSize = self.image.size;
+    self.bigImageScrollView.userInteractionEnabled = YES;
+    self.bigImageScrollView.delegate = self;
+    [self.bigImageScrollView addSubview:self.imageView];
+    
+    [self.view addSubview:self.bigImageScrollView];
+    
+    //设置最大伸缩比
+    self.bigImageScrollView.maximumZoomScale = 2.0;
+    self.bigImageScrollView.minimumZoomScale = 1.0;
+    
+    //双击手势
+    UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTap:)];
+    tapGesture.numberOfTapsRequired = 2;
+    [self.bigImageScrollView addGestureRecognizer:tapGesture];
+}
+
+- (void)doubleTap:(UITapGestureRecognizer *) sender
+{
+    //判断当前是否放大
+    if (self.bigImageScrollView.zoomScale > 1) {
+        //当前放大了，缩小
+        [self.bigImageScrollView setZoomScale:1.0 animated:YES];
+    }else if (self.bigImageScrollView.zoomScale == 1){
+        //当前没放大，放大
+        [self.bigImageScrollView setZoomScale:2.0 animated:YES];
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -304,5 +348,11 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - UIScrollView Delegate
+-(UIView *)viewForZoomingInScrollView:(UIScrollView *)scrollView
+{
+    return self.imageView;
+}
 
 @end

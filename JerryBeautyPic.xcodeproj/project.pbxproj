@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		342BDAA95E9E49B31E398CAC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E158D3005ED309C5BBF201F6 /* libPods.a */; };
+		C40013A11CC3E88600B05939 /* InternetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C40013A01CC3E88600B05939 /* InternetTool.m */; };
+		C40013A41CC3EBC900B05939 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C40013A31CC3EBC900B05939 /* Reachability.m */; };
+		C42F002C1CA43EE800A67FC7 /* FavoritesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C42F002B1CA43EE800A67FC7 /* FavoritesListViewController.m */; };
 		C47F64681C956B7B0065FC83 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C47F64671C956B7B0065FC83 /* main.m */; };
 		C47F646B1C956B7B0065FC83 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C47F646A1C956B7B0065FC83 /* AppDelegate.m */; };
 		C47F646E1C956B7B0065FC83 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C47F646D1C956B7B0065FC83 /* ViewController.m */; };
@@ -27,6 +30,13 @@
 /* Begin PBXFileReference section */
 		30B2D57D7A24CA4D191B61AE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		A1D47764E68DB4E5F7C0BAE6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		C400139D1CC3E70700B05939 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		C400139F1CC3E88600B05939 /* InternetTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InternetTool.h; sourceTree = "<group>"; };
+		C40013A01CC3E88600B05939 /* InternetTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InternetTool.m; sourceTree = "<group>"; };
+		C40013A21CC3EBC900B05939 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
+		C40013A31CC3EBC900B05939 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		C42F002A1CA43EE800A67FC7 /* FavoritesListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesListViewController.h; sourceTree = "<group>"; };
+		C42F002B1CA43EE800A67FC7 /* FavoritesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesListViewController.m; sourceTree = "<group>"; };
 		C47F64631C956B7B0065FC83 /* JerryBeautyPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JerryBeautyPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C47F64671C956B7B0065FC83 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		C47F64691C956B7B0065FC83 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -105,6 +115,8 @@
 				C47F646A1C956B7B0065FC83 /* AppDelegate.m */,
 				C47F646C1C956B7B0065FC83 /* ViewController.h */,
 				C47F646D1C956B7B0065FC83 /* ViewController.m */,
+				C42F002A1CA43EE800A67FC7 /* FavoritesListViewController.h */,
+				C42F002B1CA43EE800A67FC7 /* FavoritesListViewController.m */,
 				C4ADCE111C9F046F00136ECD /* BigImageViewController.h */,
 				C4ADCE121C9F046F00136ECD /* BigImageViewController.m */,
 				C47F646F1C956B7B0065FC83 /* Main.storyboard */,
@@ -175,10 +187,14 @@
 		C4EEA3051CA1BFE0001B1B93 /* Custom */ = {
 			isa = PBXGroup;
 			children = (
+				C40013A21CC3EBC900B05939 /* Reachability.h */,
+				C40013A31CC3EBC900B05939 /* Reachability.m */,
 				C4ADCE0E1C9F021F00136ECD /* UIColor+Hex.h */,
 				C4ADCE0F1C9F021F00136ECD /* UIColor+Hex.m */,
 				C4EEA3091CA1C78D001B1B93 /* InfoImageView.h */,
 				C4EEA30A1CA1C78D001B1B93 /* InfoImageView.m */,
+				C400139F1CC3E88600B05939 /* InternetTool.h */,
+				C40013A01CC3E88600B05939 /* InternetTool.m */,
 			);
 			name = Custom;
 			sourceTree = "<group>";
@@ -186,6 +202,7 @@
 		F1DBFB4FC3606D678172C95E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C400139D1CC3E70700B05939 /* SystemConfiguration.framework */,
 				E158D3005ED309C5BBF201F6 /* libPods.a */,
 			);
 			name = Frameworks;
@@ -224,6 +241,7 @@
 				TargetAttributes = {
 					C47F64621C956B7B0065FC83 = {
 						CreatedOnToolsVersion = 7.1.1;
+						DevelopmentTeam = 8VT7C5QT4V;
 					};
 				};
 			};
@@ -297,11 +315,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C40013A41CC3EBC900B05939 /* Reachability.m in Sources */,
+				C40013A11CC3E88600B05939 /* InternetTool.m in Sources */,
 				C47F646E1C956B7B0065FC83 /* ViewController.m in Sources */,
 				C4EEA3041CA1AFD8001B1B93 /* FileOperationHelper.m in Sources */,
 				C4ADCE101C9F021F00136ECD /* UIColor+Hex.m in Sources */,
 				C4ADCE131C9F046F00136ECD /* BigImageViewController.m in Sources */,
 				C4EEA30B1CA1C78D001B1B93 /* InfoImageView.m in Sources */,
+				C42F002C1CA43EE800A67FC7 /* FavoritesListViewController.m in Sources */,
 				C47F646B1C956B7B0065FC83 /* AppDelegate.m in Sources */,
 				C47F64681C956B7B0065FC83 /* main.m in Sources */,
 				C488EF9B1CA0701C00FBADB2 /* AMTumblrHud.m in Sources */,
@@ -417,11 +438,13 @@
 			baseConfigurationReference = A1D47764E68DB4E5F7C0BAE6 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = JerryBeautyPic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.banma.zxq;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jerry.beauty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "33198173-7634-44f4-990e-eeee746d0a48";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -430,11 +453,13 @@
 			baseConfigurationReference = 30B2D57D7A24CA4D191B61AE /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = JerryBeautyPic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.banma.zxq;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jerry.beauty;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "33198173-7634-44f4-990e-eeee746d0a48";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};

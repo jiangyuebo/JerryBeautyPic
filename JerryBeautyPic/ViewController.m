@@ -12,10 +12,13 @@
 #import "BigImageViewController.h"
 #import "ImageBlockModel.h"
 #import "InfoImageView.h"
+#import "FavoritesListViewController.h"
+#import "InternetTool.h"
 
 #import "Header.h"
 
 #import "AMTumblrHud.h"
+#import "PishumToast.h"
 
 @interface ViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -69,6 +72,9 @@
     
     //添加收藏进入按钮
     [self addEnterFavoriteListButton];
+    
+    //添加回到顶部按钮
+    [self addGoToListTopButton];
 }
 
 #pragma mark 添加收藏进入按钮
@@ -83,15 +89,42 @@
     self.navigationItem.rightBarButtonItem = item;
 }
 
+#pragma mark 添加回到列表顶部按钮
+- (void)addGoToListTopButton
+{
+    UIButton *topButton = [[UIButton alloc] init];
+    [topButton setImage:[UIImage imageNamed:@"top"] forState:UIControlStateNormal];
+    
+    CGFloat buttonMargin = 10;
+    CGFloat buttonWidth = 40;
+    CGFloat buttonheight = 40;
+    CGFloat x = self.screenRect.size.width - buttonWidth - buttonMargin;
+    CGFloat y = self.screenRect.size.height - buttonheight - buttonMargin;
+    CGRect topButtonFrame = CGRectMake(x,y, buttonWidth, buttonheight);
+    topButton.frame = topButtonFrame;
+    
+    [topButton addTarget:self action:@selector(goToTop) forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.view addSubview:topButton];
+}
+
+#pragma mark 进入收藏列表
 - (void)enterFavoritesList
 {
-    NSLog(@"进入收藏列表");
+    UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:[NSBundle mainBundle]];
+    FavoritesListViewController *fvtlvc = [storyboard instantiateViewControllerWithIdentifier:@"FavoritesListViewController"];
+    [self.navigationController pushViewController:fvtlvc animated:YES];
+}
+
+#pragma mark 回到列表顶部
+- (void)goToTop
+{
+    [self.myTableView setContentOffset:CGPointMake(0, 0) animated:YES];
 }
 
 #pragma mark 从服务器加载图片信息
 - (void)loadImageInfoFromServer
 {
-    NSLog(@"start fetch image info from server");
     BmobQuery *bombQuery = [BmobQuery queryWithClassName:@"picture"];
     bombQuery.limit = 3;
     bombQuery.skip = [self.imageBlockModelArray count];
@@ -117,24 +150,20 @@
                 //获取更新时间
                 NSString *updateDateStr = [obj objectForKey:@"createdAt"];
                 updateDateStr = [updateDateStr substringWithRange:NSMakeRange(0, 10)];
-                NSLog(@"update time : %@",updateDateStr);
                 imageBlock.updateDateStr = updateDateStr;
                 
                 NSMutableArray *tagsArray = [[NSMutableArray alloc] init];
                 //获取tag
                 NSString *tag1Str = [obj objectForKey:@"tag1"];
                 if (tag1Str != NULL) {
-                    NSLog(@"tag1Str : %@",tag1Str);
                     [tagsArray addObject:tag1Str];
                 }
                 NSString *tag2Str = [obj objectForKey:@"tag2"];
                 if (tag2Str != NULL) {
-                    NSLog(@"tag2Str : %@",tag2Str);
                     [tagsArray addObject:tag2Str];
                 }
                 NSString *tag3Str = [obj objectForKey:@"tag3"];
                 if (tag3Str != NULL) {
-                    NSLog(@"tag3Str : %@",tag3Str);
                     [tagsArray addObject:tag3Str];
                 }
                 imageBlock.tagsArray = tagsArray;
@@ -150,7 +179,7 @@
                 [self.tumblrHUD removeFromSuperview];
             }
         }else{
-            NSLog(@"没有更多了");
+            [PishumToast showToastWithMessage:@"没有更多了~" Length:TOAST_MIDDLE ParentView:self.view];
         }
     }];
 }
@@ -158,22 +187,28 @@
 #pragma mark 加载初始数据
 - (void)initLoadImageData
 {
-    self.imageBlockModelArray = [[NSMutableArray alloc] init];
-    //显示网络加载动画
-    self.tumblrHUD = [[AMTumblrHud alloc] initWithFrame:CGRectMake((CGFloat) ((self.view.frame.size.width - 55) * 0.5),
-                                                                           (CGFloat) ((self.view.frame.size.height - 20) * 0.5), 55, 20)];
-    self.tumblrHUD.hudColor = UIColorFromRGB(0xF1F2F3);//[UIColor magentaColor];
-    [self.view addSubview:self.tumblrHUD];
-    
-    [self.tumblrHUD showAnimated:YES];
-    
-    [self loadImageInfoFromServer];
+    //判断当前网络是否可用
+    if ([InternetTool isNetConnected]) {
+        //有网络连接
+        self.imageBlockModelArray = [[NSMutableArray alloc] init];
+        //显示网络加载动画
+        self.tumblrHUD = [[AMTumblrHud alloc] initWithFrame:CGRectMake((CGFloat) ((self.view.frame.size.width - 55) * 0.5),
+                                                                       (CGFloat) ((self.view.frame.size.height - 20) * 0.5), 55, 20)];
+        self.tumblrHUD.hudColor = UIColorFromRGB(0xF1F2F3);//[UIColor magentaColor];
+        [self.view addSubview:self.tumblrHUD];
+        
+        [self.tumblrHUD showAnimated:YES];
+        
+        [self loadImageInfoFromServer];
+    }else{
+        //无网络连接
+        [PishumToast showToastWithMessage:@"网络不给力，请检查网络设置" Length:3 ParentView:self.view];
+    }
 }
 
 #pragma mark 异步加载图片调用
 - (void)loadMoreImageInBackground
 {
-    NSLog(@"开始偷偷加载了 。。。 ");
     NSOperationQueue *operatinQueue = [[NSOperationQueue alloc] init];
     NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(loadImage) object:nil];
     [operatinQueue addOperation:operation];
@@ -285,11 +320,6 @@
     return cell;
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    NSLog(@"didSelectRowAtIndexPath ... ");
-}
-
 -(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     //设置当前显示的是倒数第几张图片时，开始从后台加载新图片
@@ -315,10 +345,7 @@
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
     //判断所选图片在数组中的位置
-    
-    
     BigImageViewController *bigImageViewController = segue.destinationViewController;
-    NSLog(@"准备跳转");
     bigImageViewController.image = self.selectedImage;
     bigImageViewController.imageName = self.selectedImageName;
 }
