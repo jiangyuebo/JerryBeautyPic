@@ -1,10 +1,13 @@
 PODS:
   - BmobSDK (1.6.6)
+  - MJRefresh (3.1.0)
 
 DEPENDENCIES:
   - BmobSDK
+  - MJRefresh
 
 SPEC CHECKSUMS:
   BmobSDK: c896d4ff3986f2b4fc8406fb2b801230f7419878
+  MJRefresh: 743e6404967d1c2c688472ea3ecfde247d872db4
 
 COCOAPODS: 0.38.2

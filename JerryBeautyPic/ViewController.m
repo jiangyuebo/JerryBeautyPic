@@ -20,6 +20,9 @@
 #import "AMTumblrHud.h"
 #import "PishumToast.h"
 
+//下拉刷新
+#import "MJRefresh.h"
+
 @interface ViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 //列表
@@ -75,6 +78,13 @@
     
     //添加回到顶部按钮
     [self addGoToListTopButton];
+    
+    //添加下拉刷新
+    self.myTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        NSLog(@"开始刷新");
+        [self.myTableView.mj_header endRefreshing];
+    }];
+    
 }
 
 #pragma mark 添加收藏进入按钮

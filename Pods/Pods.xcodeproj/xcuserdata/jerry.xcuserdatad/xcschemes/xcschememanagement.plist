@@ -4,6 +4,11 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>MJRefresh.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -12,7 +17,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>1469924FC52F60B0068FA24EEFCB3EFC</key>
+		<key>499F8513DA9F68498F8C54F0B0E99A85</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CA91ADF6D5F85DD713782FD1ECBCAF51</key>
 		<dict>
 			<key>primary</key>
 			<true/>
