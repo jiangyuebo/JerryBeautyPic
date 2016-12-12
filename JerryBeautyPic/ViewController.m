@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "BmobQuery.h"
 #import "UIColor+Hex.h"
 #import "BigImageViewController.h"
 #import "ImageBlockModel.h"
@@ -20,8 +19,12 @@
 #import "AMTumblrHud.h"
 #import "PishumToast.h"
 
+#import "LoadingAnimation.h"
+
 //下拉刷新
 #import "MJRefresh.h"
+//Bbom
+#import <BmobSDK/Bmob.h>
 
 @interface ViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -38,7 +41,12 @@
 //被选中的图片名称
 @property (strong,nonatomic) NSString *selectedImageName;
 
-@property (strong,nonatomic) AMTumblrHud *tumblrHUD;
+//缓存
+@property (strong,nonatomic) NSCache *imageCache;
+
+//@property (strong,nonatomic) AMTumblrHud *tumblrHUD;
+//加载中动画
+@property (strong,nonatomic) LoadingAnimation *loadingAnimation;
 
 //进入收藏按钮
 @property (strong,nonatomic) UIButton *enterFavorites;
@@ -64,14 +72,17 @@
 }
 
 #pragma mark - 初始化界面及变量
-- (void)viewSetup
-{
+- (void)viewSetup{
+    
     self.myTableView.delegate = self;
     self.myTableView.dataSource = self;
     //去掉tableView上面的空白
     self.automaticallyAdjustsScrollViewInsets = false;
     
     self.screenRect = [[UIScreen mainScreen] bounds];
+    
+    //初始化缓存
+    self.imageCache = [NSCache new];
     
     //添加收藏进入按钮
     [self addEnterFavoriteListButton];
@@ -82,14 +93,16 @@
     //添加下拉刷新
     self.myTableView.mj_header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
         NSLog(@"开始刷新");
+        [self loadImageInfoFromServer:DIRECTION_UP];
+        //向前查询最新图片
         [self.myTableView.mj_header endRefreshing];
     }];
     
 }
 
 #pragma mark 添加收藏进入按钮
-- (void)addEnterFavoriteListButton
-{
+- (void)addEnterFavoriteListButton{
+    
     self.enterFavorites = [UIButton buttonWithType:UIButtonTypeCustom];
     [self.enterFavorites setBackgroundImage:[UIImage imageNamed:@"folder_bookmark"] forState:UIControlStateNormal];
     self.enterFavorites.frame = CGRectMake(0, 0, 22, 22);
@@ -133,17 +146,30 @@
 }
 
 #pragma mark 从服务器加载图片信息
-- (void)loadImageInfoFromServer
-{
+- (void)loadImageInfoFromServer:(NSInteger) direction{
+    
     BmobQuery *bombQuery = [BmobQuery queryWithClassName:@"picture"];
     bombQuery.limit = 3;
-    bombQuery.skip = [self.imageBlockModelArray count];
+    if (direction == DIRECTION_UP) {
+        //查询最新
+        bombQuery.skip = 0;
+    }else{
+        bombQuery.skip = [self.imageBlockModelArray count];
+    }
+    
     [bombQuery orderByDescending:@"createdAt"];
     [bombQuery findObjectsInBackgroundWithBlock:^(NSArray *array, NSError *error) {
         if ([array count] > 0) {
+            if (direction == DIRECTION_UP) {
+                [self.imageBlockModelArray removeAllObjects];
+            }
+            
             for (BmobObject *obj in array) {
                 //
                 ImageBlockModel *imageBlock = [[ImageBlockModel alloc] init];
+                
+                //获取图片ID
+                NSString *imageId = [obj objectForKey:@"objectId"];
                 
                 //获得图片
                 NSString *urlTemp = [obj objectForKey:@"urlstring"];
@@ -154,7 +180,17 @@
                 imageBlock.imageName = imageName;
                 
                 //读取图片数据
-                UIImage *image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURLStr]]];
+                //判断图片缓存中是否有该图片
+                UIImage *image;
+                if ([self.imageCache objectForKey:imageId]) {
+                    //有，使用缓存中图片
+                    image = [self.imageCache objectForKey:imageId];
+                }else{
+                    //没有，从网络获取
+                    image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURLStr]]];
+                    //存入缓存
+                    [self.imageCache setObject:image forKey:imageId];
+                }
                 imageBlock.image = image;
                 
                 //获取更新时间
@@ -185,11 +221,12 @@
                 [self.myTableView reloadData];
             }
 
-            if (self.tumblrHUD) {
-                [self.tumblrHUD removeFromSuperview];
+            if (self.loadingAnimation) {
+                [self.loadingAnimation stopLoadingaAnimation];
             }
         }else{
             [PishumToast showToastWithMessage:@"没有更多了~" Length:TOAST_MIDDLE ParentView:self.view];
+            [self.loadingAnimation stopLoadingaAnimation];
         }
     }];
 }
@@ -201,15 +238,18 @@
     if ([InternetTool isNetConnected]) {
         //有网络连接
         self.imageBlockModelArray = [[NSMutableArray alloc] init];
-        //显示网络加载动画
-        self.tumblrHUD = [[AMTumblrHud alloc] initWithFrame:CGRectMake((CGFloat) ((self.view.frame.size.width - 55) * 0.5),
-                                                                       (CGFloat) ((self.view.frame.size.height - 20) * 0.5), 55, 20)];
-        self.tumblrHUD.hudColor = UIColorFromRGB(0xF1F2F3);//[UIColor magentaColor];
-        [self.view addSubview:self.tumblrHUD];
+//        //显示网络加载动画
+//        self.tumblrHUD = [[AMTumblrHud alloc] initWithFrame:CGRectMake((CGFloat) ((self.view.frame.size.width - 55) * 0.5),
+//                                                                       (CGFloat) ((self.view.frame.size.height - 20) * 0.5), 55, 20)];
+//        self.tumblrHUD.hudColor = UIColorFromRGB(0xF1F2F3);//[UIColor magentaColor];
+//        [self.view addSubview:self.tumblrHUD];
+//        
+//        [self.tumblrHUD showAnimated:YES];
         
-        [self.tumblrHUD showAnimated:YES];
+        self.loadingAnimation = [[LoadingAnimation alloc] init];
+        [self.loadingAnimation startLoadingAnimationInView:self.view];
         
-        [self loadImageInfoFromServer];
+        [self loadImageInfoFromServer:DIRECTION_DOWN];
     }else{
         //无网络连接
         [PishumToast showToastWithMessage:@"网络不给力，请检查网络设置" Length:3 ParentView:self.view];
@@ -227,7 +267,7 @@
 #pragma mark 加载图片
 - (void)loadImage
 {
-    [self loadImageInfoFromServer];
+    [self loadImageInfoFromServer:DIRECTION_DOWN];
 }
 
 #pragma mark - TableView Delegate

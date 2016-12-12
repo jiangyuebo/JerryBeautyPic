@@ -16,12 +16,12 @@
 
 #define DIR_NAME_IMAGES @"favorites"
 
-#define TAG_BEAUTY @"meinv"
-#define TAG_LEG @"meitui"
-#define TAG_SWIM_SUIT @"yongyi"
-#define TAG_TIGHT @"jinshen"
-#define TAG_ASS @"meitun"
-#define TAG_SPORT @"yundong"
+#define TAG_BEAUTY @"1"
+#define TAG_LEG @"2"
+#define TAG_SWIM_SUIT @"3"
+#define TAG_TIGHT @"4"
+#define TAG_ASS @"5"
+#define TAG_SPORT @"6"
 
 #define DIRECTION_UP 0
 #define DIRECTION_DOWN -1

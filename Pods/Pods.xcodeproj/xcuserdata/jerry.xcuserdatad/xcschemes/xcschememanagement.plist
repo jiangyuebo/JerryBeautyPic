@@ -9,7 +9,7 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods.xcscheme</key>
+		<key>Pods-JerryBeautyPic.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -17,12 +17,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>499F8513DA9F68498F8C54F0B0E99A85</key>
+		<key>04CF549EBEEE7BC87AEAE35397184D94</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CA91ADF6D5F85DD713782FD1ECBCAF51</key>
+		<key>D1C7F330A69EEC80014E8A933BA6809D</key>
 		<dict>
 			<key>primary</key>
 			<true/>

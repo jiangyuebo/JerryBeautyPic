@@ -7,7 +7,7 @@
 //
 
 #import "AppDelegate.h"
-#import "Bmob.h"
+#import <BmobSDK/Bmob.h>
 
 @interface AppDelegate ()
 

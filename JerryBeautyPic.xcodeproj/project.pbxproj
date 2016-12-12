@@ -7,15 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		342BDAA95E9E49B31E398CAC /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E158D3005ED309C5BBF201F6 /* libPods.a */; };
+		A6787C9FBDC43EEDCD9C7004 /* libPods-JerryBeautyPic.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E78C3B833E8020D95F3B9610 /* libPods-JerryBeautyPic.a */; };
 		C40013A11CC3E88600B05939 /* InternetTool.m in Sources */ = {isa = PBXBuildFile; fileRef = C40013A01CC3E88600B05939 /* InternetTool.m */; };
 		C40013A41CC3EBC900B05939 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = C40013A31CC3EBC900B05939 /* Reachability.m */; };
+		C40013AA1CC7E96500B05939 /* LoadingAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = C40013A91CC7E96500B05939 /* LoadingAnimation.m */; };
 		C42F002C1CA43EE800A67FC7 /* FavoritesListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C42F002B1CA43EE800A67FC7 /* FavoritesListViewController.m */; };
 		C47F64681C956B7B0065FC83 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = C47F64671C956B7B0065FC83 /* main.m */; };
 		C47F646B1C956B7B0065FC83 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = C47F646A1C956B7B0065FC83 /* AppDelegate.m */; };
 		C47F646E1C956B7B0065FC83 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = C47F646D1C956B7B0065FC83 /* ViewController.m */; };
 		C47F64711C956B7B0065FC83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C47F646F1C956B7B0065FC83 /* Main.storyboard */; };
-		C47F64731C956B7B0065FC83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C47F64721C956B7B0065FC83 /* Assets.xcassets */; };
+		C47F64731C956B7B0065FC83 /* i.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C47F64721C956B7B0065FC83 /* i.xcassets */; };
 		C47F64761C956B7B0065FC83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C47F64741C956B7B0065FC83 /* LaunchScreen.storyboard */; };
 		C488EF921CA042D200FBADB2 /* ImageBlockModel.m in Sources */ = {isa = PBXBuildFile; fileRef = C488EF911CA042D200FBADB2 /* ImageBlockModel.m */; };
 		C488EF971CA06CBA00FBADB2 /* PishumToast.m in Sources */ = {isa = PBXBuildFile; fileRef = C488EF961CA06CBA00FBADB2 /* PishumToast.m */; };
@@ -28,13 +29,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		30B2D57D7A24CA4D191B61AE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		A1D47764E68DB4E5F7C0BAE6 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		C400139D1CC3E70700B05939 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		C400139F1CC3E88600B05939 /* InternetTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InternetTool.h; sourceTree = "<group>"; };
 		C40013A01CC3E88600B05939 /* InternetTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InternetTool.m; sourceTree = "<group>"; };
 		C40013A21CC3EBC900B05939 /* Reachability.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Reachability.h; sourceTree = "<group>"; };
 		C40013A31CC3EBC900B05939 /* Reachability.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Reachability.m; sourceTree = "<group>"; };
+		C40013A81CC7E96500B05939 /* LoadingAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingAnimation.h; sourceTree = "<group>"; };
+		C40013A91CC7E96500B05939 /* LoadingAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingAnimation.m; sourceTree = "<group>"; };
 		C42F002A1CA43EE800A67FC7 /* FavoritesListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FavoritesListViewController.h; sourceTree = "<group>"; };
 		C42F002B1CA43EE800A67FC7 /* FavoritesListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FavoritesListViewController.m; sourceTree = "<group>"; };
 		C47F64631C956B7B0065FC83 /* JerryBeautyPic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JerryBeautyPic.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,7 +45,7 @@
 		C47F646C1C956B7B0065FC83 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		C47F646D1C956B7B0065FC83 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		C47F64701C956B7B0065FC83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		C47F64721C956B7B0065FC83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C47F64721C956B7B0065FC83 /* i.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = i.xcassets; sourceTree = "<group>"; };
 		C47F64751C956B7B0065FC83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C47F64771C956B7B0065FC83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C488EF901CA042D200FBADB2 /* ImageBlockModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageBlockModel.h; sourceTree = "<group>"; };
@@ -63,7 +64,9 @@
 		C4EEA3031CA1AFD8001B1B93 /* FileOperationHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FileOperationHelper.m; sourceTree = "<group>"; };
 		C4EEA3091CA1C78D001B1B93 /* InfoImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InfoImageView.h; sourceTree = "<group>"; };
 		C4EEA30A1CA1C78D001B1B93 /* InfoImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InfoImageView.m; sourceTree = "<group>"; };
-		E158D3005ED309C5BBF201F6 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E78C3B833E8020D95F3B9610 /* libPods-JerryBeautyPic.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-JerryBeautyPic.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		EEDA4C6FF5525C4CC69BD4A1 /* Pods-JerryBeautyPic.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JerryBeautyPic.release.xcconfig"; path = "Pods/Target Support Files/Pods-JerryBeautyPic/Pods-JerryBeautyPic.release.xcconfig"; sourceTree = "<group>"; };
+		F399344B1DD4486F22E0C24C /* Pods-JerryBeautyPic.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JerryBeautyPic.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JerryBeautyPic/Pods-JerryBeautyPic.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,18 +74,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				342BDAA95E9E49B31E398CAC /* libPods.a in Frameworks */,
+				A6787C9FBDC43EEDCD9C7004 /* libPods-JerryBeautyPic.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2982933A9045FDD08A376730 /* Pods */ = {
+		68CCA4EEE510FDDD73951236 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				A1D47764E68DB4E5F7C0BAE6 /* Pods.debug.xcconfig */,
-				30B2D57D7A24CA4D191B61AE /* Pods.release.xcconfig */,
+				F399344B1DD4486F22E0C24C /* Pods-JerryBeautyPic.debug.xcconfig */,
+				EEDA4C6FF5525C4CC69BD4A1 /* Pods-JerryBeautyPic.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -93,8 +96,8 @@
 				C498CE531C9B26F000985A2D /* Podfile */,
 				C47F64651C956B7B0065FC83 /* JerryBeautyPic */,
 				C47F64641C956B7B0065FC83 /* Products */,
-				2982933A9045FDD08A376730 /* Pods */,
 				F1DBFB4FC3606D678172C95E /* Frameworks */,
+				68CCA4EEE510FDDD73951236 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -120,7 +123,7 @@
 				C4ADCE111C9F046F00136ECD /* BigImageViewController.h */,
 				C4ADCE121C9F046F00136ECD /* BigImageViewController.m */,
 				C47F646F1C956B7B0065FC83 /* Main.storyboard */,
-				C47F64721C956B7B0065FC83 /* Assets.xcassets */,
+				C47F64721C956B7B0065FC83 /* i.xcassets */,
 				C47F64741C956B7B0065FC83 /* LaunchScreen.storyboard */,
 				C47F64771C956B7B0065FC83 /* Info.plist */,
 				C47F64661C956B7B0065FC83 /* Supporting Files */,
@@ -195,6 +198,8 @@
 				C4EEA30A1CA1C78D001B1B93 /* InfoImageView.m */,
 				C400139F1CC3E88600B05939 /* InternetTool.h */,
 				C40013A01CC3E88600B05939 /* InternetTool.m */,
+				C40013A81CC7E96500B05939 /* LoadingAnimation.h */,
+				C40013A91CC7E96500B05939 /* LoadingAnimation.m */,
 			);
 			name = Custom;
 			sourceTree = "<group>";
@@ -203,7 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				C400139D1CC3E70700B05939 /* SystemConfiguration.framework */,
-				E158D3005ED309C5BBF201F6 /* libPods.a */,
+				E78C3B833E8020D95F3B9610 /* libPods-JerryBeautyPic.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -215,11 +220,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C47F647A1C956B7B0065FC83 /* Build configuration list for PBXNativeTarget "JerryBeautyPic" */;
 			buildPhases = (
-				AF896F1546D885871969DCD9 /* Check Pods Manifest.lock */,
+				1E9082CEDECAD243B1A5F0D0 /* [CP] Check Pods Manifest.lock */,
 				C47F645F1C956B7B0065FC83 /* Sources */,
 				C47F64601C956B7B0065FC83 /* Frameworks */,
 				C47F64611C956B7B0065FC83 /* Resources */,
-				EF6B216A28D491C67F79E269 /* Copy Pods Resources */,
+				F9191E90BE69B50ACC999AFC /* [CP] Embed Pods Frameworks */,
+				8799A377739B7434B12E96C7 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -236,12 +242,12 @@
 		C47F645B1C956B7B0065FC83 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0710;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = Jerry;
 				TargetAttributes = {
 					C47F64621C956B7B0065FC83 = {
 						CreatedOnToolsVersion = 7.1.1;
-						DevelopmentTeam = 8VT7C5QT4V;
+						DevelopmentTeam = 2SV488327T;
 					};
 				};
 			};
@@ -269,7 +275,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C47F64761C956B7B0065FC83 /* LaunchScreen.storyboard in Resources */,
-				C47F64731C956B7B0065FC83 /* Assets.xcassets in Resources */,
+				C47F64731C956B7B0065FC83 /* i.xcassets in Resources */,
 				C498CE541C9B26F000985A2D /* Podfile in Resources */,
 				C47F64711C956B7B0065FC83 /* Main.storyboard in Resources */,
 			);
@@ -278,34 +284,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		AF896F1546D885871969DCD9 /* Check Pods Manifest.lock */ = {
+		1E9082CEDECAD243B1A5F0D0 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		EF6B216A28D491C67F79E269 /* Copy Pods Resources */ = {
+		8799A377739B7434B12E96C7 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JerryBeautyPic/Pods-JerryBeautyPic-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F9191E90BE69B50ACC999AFC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JerryBeautyPic/Pods-JerryBeautyPic-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -318,6 +339,7 @@
 				C40013A41CC3EBC900B05939 /* Reachability.m in Sources */,
 				C40013A11CC3E88600B05939 /* InternetTool.m in Sources */,
 				C47F646E1C956B7B0065FC83 /* ViewController.m in Sources */,
+				C40013AA1CC7E96500B05939 /* LoadingAnimation.m in Sources */,
 				C4EEA3041CA1AFD8001B1B93 /* FileOperationHelper.m in Sources */,
 				C4ADCE101C9F021F00136ECD /* UIColor+Hex.m in Sources */,
 				C4ADCE131C9F046F00136ECD /* BigImageViewController.m in Sources */,
@@ -366,13 +388,17 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 2SV488327T;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -409,13 +435,17 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 2SV488327T;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -435,14 +465,16 @@
 		};
 		C47F647B1C956B7B0065FC83 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A1D47764E68DB4E5F7C0BAE6 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = F399344B1DD4486F22E0C24C /* Pods-JerryBeautyPic.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 2SV488327T;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = JerryBeautyPic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jerry.beauty;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jerry.beautyGallery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -450,14 +482,16 @@
 		};
 		C47F647C1C956B7B0065FC83 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 30B2D57D7A24CA4D191B61AE /* Pods.release.xcconfig */;
+			baseConfigurationReference = EEDA4C6FF5525C4CC69BD4A1 /* Pods-JerryBeautyPic.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = 2SV488327T;
+				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = JerryBeautyPic/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.jerry.beauty;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jerry.beautyGallery;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
