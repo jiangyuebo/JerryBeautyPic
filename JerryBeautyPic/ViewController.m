@@ -26,7 +26,7 @@
 //Bbom
 #import <BmobSDK/Bmob.h>
 
-@interface ViewController ()<UITableViewDataSource,UITableViewDelegate>
+@interface ViewController ()<UITableViewDataSource,UITableViewDelegate,NSURLSessionDataDelegate>
 
 //列表
 @property (weak, nonatomic) IBOutlet UITableView *myTableView;
@@ -51,6 +51,13 @@
 //进入收藏按钮
 @property (strong,nonatomic) UIButton *enterFavorites;
 
+@property (strong,nonatomic) NSURLSession *session;
+
+//待下载图片个数
+@property (nonatomic) NSUInteger downloadingCount;
+//下拉开关
+@property (nonatomic) BOOL dragFlag;
+
 @end
 
 @implementation ViewController
@@ -59,6 +66,8 @@
     [super viewDidLoad];
 
     self.currentIndex = 0;
+    self.downloadingCount = 0;
+    self.dragFlag = YES;
     
     //加载初始数据
     [self initLoadImageData];
@@ -96,6 +105,14 @@
         [self loadImageInfoFromServer:DIRECTION_UP];
         //向前查询最新图片
         [self.myTableView.mj_header endRefreshing];
+    }];
+    
+    //self.myTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingTarget:self refreshingAction:@selector(loadMoreImageInBackground)];
+    self.myTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
+        NSLog(@"开始上拉刷新");
+        [self loadMoreImageInBackground];
+        //
+        [self.myTableView.mj_footer endRefreshing];
     }];
     
 }
@@ -148,6 +165,12 @@
 #pragma mark 从服务器加载图片信息
 - (void)loadImageInfoFromServer:(NSInteger) direction{
     
+    if (self.dragFlag) {
+        self.dragFlag = NO;
+    }else{
+        return;
+    }
+    
     BmobQuery *bombQuery = [BmobQuery queryWithClassName:@"picture"];
     bombQuery.limit = 3;
     if (direction == DIRECTION_UP) {
@@ -164,7 +187,12 @@
                 [self.imageBlockModelArray removeAllObjects];
             }
             
+            //待下载图片个数
+            self.downloadingCount = [array count];
+            NSLog(@"待下载个数为 ： %lu",(unsigned long)self.downloadingCount);
+            
             for (BmobObject *obj in array) {
+                
                 //
                 ImageBlockModel *imageBlock = [[ImageBlockModel alloc] init];
                 
@@ -184,14 +212,20 @@
                 UIImage *image;
                 if ([self.imageCache objectForKey:imageId]) {
                     //有，使用缓存中图片
+                    NSLog(@"有缓存 ...");
                     image = [self.imageCache objectForKey:imageId];
+                    imageBlock.image = image;
+                    
+                    self.downloadingCount--;
                 }else{
                     //没有，从网络获取
-                    image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURLStr]]];
+                    //image = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:imageURLStr]]];
                     //存入缓存
-                    [self.imageCache setObject:image forKey:imageId];
+                    //[self.imageCache setObject:image forKey:imageId];
+                    //网络下载图片
+                    [self downloadImageInModel:imageBlock ById:imageId FromServer:imageURLStr];
                 }
-                imageBlock.image = image;
+                //imageBlock.image = image;
                 
                 //获取更新时间
                 NSString *updateDateStr = [obj objectForKey:@"createdAt"];
@@ -217,12 +251,16 @@
                 [self.imageBlockModelArray addObject:imageBlock];
             }
             
-            if (self.myTableView) {
-                [self.myTableView reloadData];
-            }
-
-            if (self.loadingAnimation) {
-                [self.loadingAnimation stopLoadingaAnimation];
+            if (self.downloadingCount == 0) {
+                if (self.myTableView) {
+                    [self.myTableView reloadData];
+                }
+                
+                if (self.loadingAnimation) {
+                    [self.loadingAnimation stopLoadingaAnimation];
+                }
+                
+                self.dragFlag = YES;
             }
         }else{
             [PishumToast showToastWithMessage:@"没有更多了~" Length:TOAST_MIDDLE ParentView:self.view];
@@ -259,6 +297,7 @@
 #pragma mark 异步加载图片调用
 - (void)loadMoreImageInBackground
 {
+    NSLog(@"上拉加载 ...");
     NSOperationQueue *operatinQueue = [[NSOperationQueue alloc] init];
     NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(loadImage) object:nil];
     [operatinQueue addOperation:operation];
@@ -370,13 +409,13 @@
     return cell;
 }
 
--(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
-{
+//-(void)tableView:(UITableView *)tableView willDisplayCell:(UITableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath
+//{
     //设置当前显示的是倒数第几张图片时，开始从后台加载新图片
-    if (([self.imageBlockModelArray count] - indexPath.row) < leftPicNumber) {
-        [self loadMoreImageInBackground];
-    }
-}
+//    if (([self.imageBlockModelArray count] - indexPath.row) < leftPicNumber) {
+//        [self loadMoreImageInBackground];
+//    }
+//}
 
 #pragma mark - 点击事件
 - (void)imageClicked:(UITapGestureRecognizer *) gestureRecognizer
@@ -398,6 +437,44 @@
     BigImageViewController *bigImageViewController = segue.destinationViewController;
     bigImageViewController.image = self.selectedImage;
     bigImageViewController.imageName = self.selectedImageName;
+}
+
+#pragma mark - 下载图片
+- (void)downloadImageInModel:(ImageBlockModel *) mode ById:(NSString *) imageId FromServer:(NSString *) urlStr{
+    if (urlStr) {
+        //创建URL
+        NSURL *url = [NSURL URLWithString:urlStr];
+        NSURLRequest *request = [NSURLRequest requestWithURL:url];
+        
+        NSURLSession *session = [NSURLSession sessionWithConfiguration:[NSURLSessionConfiguration ephemeralSessionConfiguration]];
+        NSURLSessionDownloadTask *task = [session downloadTaskWithRequest:request completionHandler:^(NSURL * _Nullable location, NSURLResponse * _Nullable response, NSError * _Nullable error) {
+            
+            self.downloadingCount--;
+            NSLog(@"待下载图片个数：%lu",(unsigned long)self.downloadingCount);
+            
+            UIImage *image = [[UIImage imageWithData:[NSData dataWithContentsOfURL:location]] copy];
+            [self.imageCache setObject:image forKey:imageId];
+            
+            mode.image = image;
+            
+            //如果全部下载完成，刷新
+            if (self.downloadingCount == 0) {
+                dispatch_sync(dispatch_get_main_queue(), ^{
+                    if (self.myTableView) {
+                        [self.myTableView reloadData];
+                    }
+                    
+                    if (self.loadingAnimation) {
+                        [self.loadingAnimation stopLoadingaAnimation];
+                    }
+                    
+                    self.dragFlag = YES;
+                });
+            }
+        }];
+        
+        [task resume];
+    }
 }
 
 @end
