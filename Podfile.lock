@@ -1,15 +1,18 @@
 PODS:
-  - BmobSDK (2.0.1)
+  - BmobSDK (2.2.1):
+    - WechatOpenSDK (~> 1.7.7)
   - MJRefresh (3.1.12)
+  - WechatOpenSDK (1.7.9)
 
 DEPENDENCIES:
   - BmobSDK
   - MJRefresh
 
 SPEC CHECKSUMS:
-  BmobSDK: 315013af15af31697a3b92cad2c74effed849b85
+  BmobSDK: 952f0ca736deae9d1b6591d72337df7d9072d4f2
   MJRefresh: b96cdb21c4aa75a7b07654311ab2f315c497e806
+  WechatOpenSDK: 1fe7e3b07db860d6a936c3ff4a5aba6b890958d9
 
 PODFILE CHECKSUM: 587e24102eaea3b5675685b51b1633fc75af5e4f
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.3.1

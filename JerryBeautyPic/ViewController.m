@@ -111,8 +111,6 @@
     self.myTableView.mj_footer = [MJRefreshAutoNormalFooter footerWithRefreshingBlock:^{
         NSLog(@"开始上拉刷新");
         [self loadMoreImageInBackground];
-        //
-        [self.myTableView.mj_footer endRefreshing];
     }];
     
 }
@@ -253,6 +251,7 @@
             
             if (self.downloadingCount == 0) {
                 if (self.myTableView) {
+                    [self.myTableView.mj_footer endRefreshing];
                     [self.myTableView reloadData];
                 }
                 
@@ -461,6 +460,7 @@
             if (self.downloadingCount == 0) {
                 dispatch_sync(dispatch_get_main_queue(), ^{
                     if (self.myTableView) {
+                        [self.myTableView.mj_footer endRefreshing];
                         [self.myTableView reloadData];
                     }
                     
